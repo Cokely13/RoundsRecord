@@ -9,14 +9,14 @@ const Routes = () => {
       <div>
         <nav>Welcome!
         <Link to="/"> Home</Link>
-          <Link to="/api/campuses"> Robots</Link>
-          <Link to="/api/students"> Projects</Link>
+          <Link to="/campuses"> Campuses</Link>
+          <Link to="/students"> Students</Link>
         </nav>
         <main>
           <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
           <p>This seems like a nice place to get started with some Routes!</p>
-          <Route path="/api/campuses" component={AllCampuses} />
-          <Route path="/api/students" component={AllStudents} />
+          <Route path="/campuses" component={AllCampuses} />
+          <Route path="/students" component={AllStudents} />
         </main>
       </div>
     </Router>
