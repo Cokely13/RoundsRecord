@@ -29,12 +29,12 @@ describe("Tier One: Student >- Campus Association", () => {
     });
     afterEach(() => db.sync({ force: true }));
 
-    xit("a student may be assigned to at most one campus", async () => {
+    it("a student may be assigned to at most one campus", async () => {
       const sallysCampus = await student1.getCampus();
       expect(sallysCampus.name).to.equal(campus.name);
     });
 
-    xit("a campus may have many enrolled students", async () => {
+    it("a campus may have many enrolled students", async () => {
       const result = await campus.hasStudents([student1, student2]);
       expect(result).to.be.equal(true);
     });
@@ -48,14 +48,14 @@ describe("Tier One: Student >- Campus Association", () => {
       students = await Student.findAll({ include: [Campus] });
     });
 
-    xit("creates at least one campus that has several students", () => {
+    it("creates at least one campus that has several students", () => {
       const campusesWithSeveralStudents = campuses
         .filter(campus => campus.students.length > 1)
         .map(campus => campus.name);
       expect(campusesWithSeveralStudents).to.have.lengthOf.above(0);
     });
 
-    xit("creates at least one student that is not assigned to a campus", () => {
+    it("creates at least one student that is not assigned to a campus", () => {
       const studentsWithNoCampus = students
         .filter(student => !student.campus)
         .map(student => student);

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const db = require('./db')
+const db = require('./database.js')
 
 
 const Campus = db.define('campus', {
@@ -21,10 +21,6 @@ const Campus = db.define('campus', {
     },
     description: {
       type: Sequelize.TEXT,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     }
 })
 
