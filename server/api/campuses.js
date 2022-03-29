@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Campus } = require('../db')
+const { Campus, Student } = require('../db')
 
 
 router.get('/', async (req, res, next) => {
@@ -10,5 +10,16 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.id, {
+      include: {model: Student}
+    });
+    res.json(campus);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router

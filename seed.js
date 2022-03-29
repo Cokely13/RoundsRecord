@@ -23,7 +23,8 @@ const students = [{
   lastName: 'Tatum',
   email: "tatum@gmail.com",
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065648.png',
-  gpa: '4.0'
+  gpa: '4.0',
+  campusId: 1
 }, {
   firstName: 'Ryan',
   lastName: 'Smith',
