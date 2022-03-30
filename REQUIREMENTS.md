@@ -49,24 +49,24 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 #### Frontend
 
 - Write a component to display a single campus with the following information:
-  - [ ] The campus's name, image, address and description
+  - [X] The campus's name, image, address and description
   - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
-- [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
-- [ ] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view
+- [X] Display the appropriate campus's info when the url matches `/campuses/:campusId`
+- [X] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view
 
 - Write a component to display a single student with the following information:
-  - [ ] The student's full name, email, image, and gpa
+  - [X] The student's full name, email, image, and gpa
   - [ ] The name of their campus (or a helpful message if they don't have one)
-- [ ] Display the appropriate student when the url matches `/students/:studentId`
-- [ ] Clicking on a student from the all-students view should navigate to show that student in the single-student view
+- [X] Display the appropriate student when the url matches `/students/:studentId`
+- [X] Clicking on a student from the all-students view should navigate to show that student in the single-student view
 
 - [ ] Clicking on the name of a student in the single-campus view should navigate to show that student in the single-student view
 - [ ] Clicking on the name of a campus in the single-student view should navigate to show that campus in the single-campus view
 
 #### Backend
 
-- [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
-- [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+- [X ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
+- [x ] Write a route to serve up a single student (based on their id), _including that student's campus_
 
 Congrats! You have completed your second vertical slice! Make sure to `commit -m "Feature: Get Single Campus and Student"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -78,23 +78,23 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
+- [X] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
 - [ ] Display this component as part of the all-campuses view, alongside the list of campuses
 - Submitting the form with a valid name/address should:
 
-  - [ ] Make an AJAX request that causes the new campus to be persisted in the database
+  - [X] Make an AJAX request that causes the new campus to be persisted in the database
   - [ ] Add the new campus to the list of campuses without needing to refresh the page
 
-- [ ] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
+- [X] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
 - [ ] Display this component as part of the all-students view, alongside the list of students
 - Submitting the form with a valid first name/last name/email should:
-  - [ ] Make an AJAX request that causes the new student to be persisted in the database
+  - [X] Make an AJAX request that causes the new student to be persisted in the database
   - [ ] Add the new student to the list of students without needing to refresh the page
 
 #### Backend
 
-- [ ] Write a route to add a new campus
-- [ ] Write a route to add a new student
+- [X] Write a route to add a new campus
+- [X] Write a route to add a new student
 
 Congrats! You have completed your third vertical slice! Make sure to `commit -m "Feature: Add Campus and Student"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -119,8 +119,8 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Backend
 
-- [ ] Write a route to remove a campus (based on its id)
-- [ ] Write a route to remove a student (based on their id)
+- [X] Write a route to remove a campus (based on its id)
+- [X] Write a route to remove a student (based on their id)
 
 Congrats! You have completed your fourth vertical slice! Make sure to `commit -m "Feature: Remove Campus and Student"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 

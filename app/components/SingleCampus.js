@@ -14,7 +14,9 @@ class SingleCampus extends React.Component {
 
   render() {
     const campus = this.props.SingleCampus
-
+    console.log("Campus", campus)
+    const students = campus.students
+    console.log("Students", students)
    return (
     <div id="single-campus" className="column">
       <div id="single-campus-detail" className="row">
@@ -22,6 +24,7 @@ class SingleCampus extends React.Component {
           <h1>{campus.name}</h1>
           <h1>{campus.address}</h1>
           <p>{campus.description}</p>
+          {/* <p>{students.firstName}</p> */}
         </div>
           <img src={campus.imageUrl} />
       </div>
