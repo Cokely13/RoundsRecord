@@ -26,7 +26,7 @@ class SingleCampus extends React.Component {
           <p>{campus.description}</p>
           {/* <p>{students.firstName}</p> */}
         </div>
-          <img src={campus.imageUrl} />
+          {/* <img src={campus.imageUrl} /> */}
       </div>
     </div>
    )}}

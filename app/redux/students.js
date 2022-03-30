@@ -19,6 +19,13 @@ const _createStudent = (student) => {
   };
 };
 
+const _updateStudent = (student) => {
+  return {
+    type: UPDATE_STUDENT,
+    student
+  };
+};
+
 const _deleteStudent = (student) => {
   return {
     type: DELETE_STUDENT,
@@ -46,6 +53,14 @@ export const createStudent = (student, history) => {
   };
 };
 
+export const updateStudent = (student, history) => {
+  return async (dispatch) => {
+    const { data: updated } = await Axios.put(`/api/students/${student.id}`, student);
+    dispatch(_updateStudent(updated));
+    history.push(`/students/${student.id}`);
+  };
+};
+
 export const deleteStudent = (id, history) => {
   return async (dispatch) => {
     const { data: student } = await Axios.delete(`/api/students/${id}`);
@@ -63,6 +78,8 @@ export default function studentsReducer(state = initialState, action) {
       return action.students
       case CREATE_STUDENT:
         return [...state, action.student];
+        case UPDATE_STUDENT:
+          return state.map((student) => (student.id === action.student.id ? action.student : student))
         case DELETE_STUDENT:
       return state.filter((student) => student.id !== action.student.id);
     default:

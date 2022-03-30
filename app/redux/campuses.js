@@ -19,6 +19,14 @@ const _createCampus = (campus) => {
   };
 };
 
+
+const _updateCampus = (campus) => {
+  return {
+    type: UPDATE_CAMPUS,
+    campus
+  };
+};
+
 const _deleteCampus = (campus) => {
   return {
     type: DELETE_CAMPUS,
@@ -46,6 +54,14 @@ export const createCampus = (campus, history) => {
   };
 };
 
+export const updateCampus = (campus, history) => {
+  return async (dispatch) => {
+    const { data: updated } = await Axios.put(`/api/campuses/${campus.id}`, campus);
+    dispatch(_updateCampus(updated));
+    history.push(`/campuses/${campus.id}`);
+  };
+};
+
 export const deleteCampus = (id, history) => {
   return async (dispatch) => {
     const { data: campus } = await Axios.delete(`/api/campuses/${id}`);
@@ -63,6 +79,8 @@ export default function campusesReducer(state = initialState, action) {
       return action.campuses
       case CREATE_CAMPUS:
         return [...state, action.campus];
+        case UPDATE_CAMPUS:
+          return state.map((campus) => (campus.id === action.campus.id ? action.campus : campus))
         case DELETE_CAMPUS:
           return state.filter((campus) => campus.id !== action.campus.id);
     default:
