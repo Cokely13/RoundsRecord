@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStudents} from "../redux/students";
+import { fetchStudents, deleteStudent} from "../redux/students";
 import { Link } from 'react-router-dom'
 
 
@@ -16,13 +16,25 @@ export class AllStudents extends React.Component {
       <div>
       {this.props.students.map((student) => {
         return (
+          <div key={student.id}>
         <Link to ={`/students/${student.id}`}key={student.id}>
         <div key={student.id}>
           <div> Name: {student.firstName} </div>
           <div> Name: {student.lastName} </div>
           <img src={student.imageUrl} />
         </div>
-        </Link>)
+        </Link>
+        <form onSubmit={(ev) => ev.preventDefault()}>
+        <button
+        type="submit"
+          className= "remove"
+          onClick={() => this.props.deleteStudent(student.id)}
+        >
+          X
+        </button>
+        </form>
+          </div>
+        )
       })}
       </div>
 
@@ -37,9 +49,10 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
-    fetchStudents: () => dispatch(fetchStudents())
+    fetchStudents: () => dispatch(fetchStudents()),
+    deleteStudent: (campus) => dispatch(deleteStudent(campus, history))
   };
 };
 

@@ -22,6 +22,7 @@ class AddCampus extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.createCampus({ ...this.state });
+    // this.props.history.push("/campuses")
   }
 
   render() {
