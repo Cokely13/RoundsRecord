@@ -42,7 +42,7 @@ export const createCampus = (campus, history) => {
   return async (dispatch) => {
     const { data: created } = await Axios.post("/api/campuses", campus);
     dispatch(_createCampus(created));
-    history.push("/");
+    history.push("/campuses");
   };
 };
 
@@ -50,7 +50,7 @@ export const deleteCampus = (id, history) => {
   return async (dispatch) => {
     const { data: campus } = await Axios.delete(`/api/campuses/${id}`);
     dispatch(_deleteCampus(campus));
-    history.push("/");
+    history.push("/campuses");
   };
 };
 
