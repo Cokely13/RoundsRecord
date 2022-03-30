@@ -1,14 +1,15 @@
 import React from 'react';
-import { updateCampus } from '../redux/campuses';
-import {fetchSingleCampus} from "../redux/singleCampus"
+import { updateStudent } from '../redux/students';
+import {fetchSingleStudent} from "../redux/singleStudent"
 import { connect } from 'react-redux';
 
-class EditCampus extends React.Component {
+class EditStudent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      address: ''
+      firstName: '',
+      lastName: '',
+      email: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,7 +18,7 @@ class EditCampus extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.fetchSingleCampus(id);
+    this.props.fetchSingleStudent(id);
   }
 
   // componentWillUnmount() {
@@ -43,21 +44,24 @@ class EditCampus extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.updateCampus({ ...this.props.campus, ...this.state });
+    this.props.updateStudent({ ...this.props.student, ...this.state });
   }
 
   render() {
-    const { name, address } = this.state;
+    const { firstName, lastName, email } = this.state;
     const { handleSubmit, handleChange } = this;
 
     return (
       <div>
-        <form id="campus-form" onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input name="name" onChange={handleChange} value={name} />
+        <form id="student-form" onSubmit={handleSubmit}>
+          <label htmlFor="firstName">First Name:</label>
+          <input name="firstName" onChange={handleChange} value={firstName} />
 
-          <label htmlFor="address">Address:</label>
-          <input name="address" onChange={handleChange} value={address} />
+          <label htmlFor="lastName">Last Name:</label>
+          <input name="lastName" onChange={handleChange} value={lastName} />
+
+          <label htmlFor="email">Email:</label>
+          <input name="email" onChange={handleChange} value={email} />
 
           <button type="submit">Submit</button>
         </form>
@@ -66,13 +70,13 @@ class EditCampus extends React.Component {
   }
 }
 
-const mapStateToProps = ({ campus }) => ({
-  campus
+const mapStateToProps = ({ student }) => ({
+  student
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  updateCampus: (campus) => dispatch(updateCampus(campus, history)),
-  fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id)),
+  updateStudent: (student) => dispatch(updateStudent(student, history)),
+  fetchSingleStudent: (id) => dispatch(fetchSingleStudent(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCampus);
+export default connect(mapStateToProps, mapDispatchToProps)(EditStudent);
