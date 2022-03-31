@@ -30,13 +30,22 @@ const students = [{
   lastName: 'Smith',
   email: "smith@gmail.com",
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066354.png&w=350&h=254',
-  gpa: '2.5'
+  gpa: '2.5',
+  campusId: 2
 }, {
+  firstName: 'Bil',
+  lastName: 'Jones',
+  email: "ct@gmail.com",
+  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4376.png&w=350&h=254',
+  gpa: '1.6',
+  campusId: 1
+},
+{
   firstName: 'Chuck',
   lastName: 'Taylor',
   email: "ct@gmail.com",
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4376.png&w=350&h=254',
-  gpa: '3.3'
+  gpa: '3.3',
 }];
 
 

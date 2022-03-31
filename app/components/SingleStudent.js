@@ -1,19 +1,18 @@
 import React from "react"
 import {connect} from 'react-redux'
 import {fetchSingleStudent} from "../redux/singleStudent"
+import Link from "react-router-dom/Link"
 
 
 class SingleStudent extends React.Component {
-  constructor(props){
-    super(props)
-  }
   componentDidMount () {
     this.props.loadSingleStudent(this.props.match.params.studentId)
   }
 
   render() {
     const student = this.props.SingleStudent
-    const campus = student.campus
+    console.log("props", this.props)
+    const campus = student.campus || ""
 
    return (
     <div id="single-student" className="column">
@@ -23,7 +22,7 @@ class SingleStudent extends React.Component {
           <h1>{student.lastName}</h1>
           <h1>{student.email}</h1>
           <h1>{student.gpa}</h1>
-          {/* <h1>{!campus.name ? "no campus" : campus.name}</h1> */}
+          <h1>{campus.name ? <Link to={`/campuses/${campus.id}`}> {campus.name} </Link> : "No Assigned Campus"}</h1>
         </div>
           <img src={student.imageUrl} />
       </div>

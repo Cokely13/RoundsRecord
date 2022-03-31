@@ -1,12 +1,10 @@
 import React from "react"
 import {connect} from 'react-redux'
 import {fetchSingleCampus} from "../redux/singleCampus"
+import Link from "react-router-dom/Link"
 
 
 class SingleCampus extends React.Component {
-  constructor(props){
-    super(props)
-  }
   componentDidMount () {
     this.props.loadSingleCampus(this.props.match.params.campusId)
 
@@ -14,8 +12,7 @@ class SingleCampus extends React.Component {
 
   render() {
     const campus = this.props.SingleCampus
-    console.log("Campus", campus)
-    const students = campus.students
+    const students = campus.students || []
     console.log("Students", students)
    return (
     <div id="single-campus" className="column">
@@ -24,9 +21,24 @@ class SingleCampus extends React.Component {
           <h1>{campus.name}</h1>
           <h1>{campus.address}</h1>
           <p>{campus.description}</p>
-          {/* <p>{students.firstName}</p> */}
+          <div> {students.name ? <div>{students.map((student) => {
+        return (
+          <div key={student.id}>
+        <Link to ={`/students/${student.id}`}key={student.id}>
+        <div key={student.id}>
+          <div> Name: {student.firstName} </div>
+          <div> Name: {student.lastName} </div>
+          <img src={student.imageUrl} />
         </div>
+        </Link>
+          </div>
+          )
+        })}
+                                 </div>
+        : "No Students Assigned to Campus"}
+          </div>
           {/* <img src={campus.imageUrl} /> */}
+        </div>
       </div>
     </div>
    )}}
