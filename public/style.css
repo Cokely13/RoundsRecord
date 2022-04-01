@@ -6,6 +6,8 @@
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
+  margin: auto;
+  border-block-color : black;
 }
 
 body {
@@ -30,6 +32,18 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.campus {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+  padding-block: 2px;
+  margin: 2px;
+  margin: auto;
 }
 
 .container {
@@ -60,4 +74,14 @@ background-color: lightgrey;
 
   img {
     max-width: 200px;
+  }
+
+  .links {
+    color: #fff;
+  }
+
+  .block {
+display: flex;
+margin-block: black;
+border: red;
   }

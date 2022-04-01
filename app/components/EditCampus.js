@@ -1,6 +1,5 @@
 import React from 'react';
-import { updateCampus } from '../redux/campuses';
-import {fetchSingleCampus} from "../redux/singleCampus"
+import { updateCampus, fetchSingleCampus } from '../redux/singleCampus';
 import { connect } from 'react-redux';
 import Link from 'react-router-dom/Link';
 
@@ -17,8 +16,9 @@ class EditCampus extends React.Component {
   }
 
   componentDidMount() {
+    console.log("PROPS", this.props)
     const { id } = this.props.match.params;
-    this.props.fetchSingleCampus(id);
+    this.props.loadSingleCampus(id);
   }
 
   // componentWillUnmount() {
@@ -26,7 +26,7 @@ class EditCampus extends React.Component {
   // }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.singleCampus.id !== this.props.singleCampus.id) {
+    if (prevProps.singleCampus.name !== this.props.singleCampus.name) {
       this.setState({
         name: this.props.singleCampus.name || '',
         address: this.props.singleCampus.address || ''
@@ -42,11 +42,16 @@ class EditCampus extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.updateCampus({ ...this.props.singleCampus, ...this.state });
+    this.setState({
+      name: '',
+      address: ''
+    })
   }
 
   render() {
     const { name, address } = this.state;
     const { handleSubmit, handleChange } = this;
+
 
     return (
       <div>
@@ -65,13 +70,13 @@ class EditCampus extends React.Component {
   }
 }
 
-const mapStateToProps = ({ singleCampus }) => ({
-  singleCampus
+const mapStateToProps = (state) => ({
+  singleCampus: state.singleCampus
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   updateCampus: (campus) => dispatch(updateCampus(campus, history)),
-  fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id)),
+  loadSingleCampus: (id) => dispatch(fetchSingleCampus(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCampus);

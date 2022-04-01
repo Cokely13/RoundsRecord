@@ -1,6 +1,5 @@
 import React from 'react';
-import { updateStudent } from '../redux/students';
-import {fetchSingleStudent} from "../redux/singleStudent"
+import {fetchSingleStudent, updateStudent} from "../redux/singleStudent"
 import { connect } from 'react-redux';
 
 class EditStudent extends React.Component {

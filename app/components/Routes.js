@@ -13,14 +13,13 @@ const Routes = () => {
   return (
     <Router>
       <div>
-        <nav>Welcome!
-        <Link to="/"> Home</Link>
-          <Link to="/campuses"> Campuses</Link>
-          <Link to="/students"> Students</Link>
+        <nav>
+        <Link className="links" to="/"> Home</Link>
+          <Link className="links" to="/campuses"> Campuses</Link>
+          <Link className="links" to="/students"> Students</Link>
         </nav>
         <main>
           <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-          <p>This seems like a nice place to get started with some Routes!</p>
           <Link to="/students">Add Student</Link>
           <Link to="/campuses">Add Campus</Link>
           <Route exact path="/campuses" component={AddCampus} />

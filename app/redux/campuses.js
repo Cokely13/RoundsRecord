@@ -3,7 +3,7 @@ import Axios from "axios";
 const SET_CAMPUSES = 'SET_CAMPUSES'
 const CREATE_CAMPUS = 'CREATE_CAMPUS'
 const DELETE_CAMPUS = "DELETE_CAMPUS";
-const UPDATE_CAMPUS = "UPDATE_CAMPUS";
+// const UPDATE_CAMPUS = "UPDATE_CAMPUS";
 
 export const setCampuses = (campuses) => {
   return {
@@ -20,12 +20,12 @@ const _createCampus = (campus) => {
 };
 
 
-const _updateCampus = (campus) => {
-  return {
-    type: UPDATE_CAMPUS,
-    campus
-  };
-};
+// const _updateCampus = (campus) => {
+//   return {
+//     type: UPDATE_CAMPUS,
+//     campus
+//   };
+// };
 
 const _deleteCampus = (campus) => {
   return {
@@ -54,13 +54,13 @@ export const createCampus = (campus, history) => {
   };
 };
 
-export const updateCampus = (campus, history) => {
-  return async (dispatch) => {
-    const { data: updated } = await Axios.put(`/api/campuses/${campus.id}`, campus);
-    dispatch(_updateCampus(updated));
-    history.push(`/campuses`);
-  };
-};
+// export const updateCampus = (campus, history) => {
+//   return async (dispatch) => {
+//     const { data: updated } = await Axios.put(`/api/campuses/${campus.id}`, campus);
+//     dispatch(_updateCampus(updated));
+//     history.push(`/campuses/${campus.id}`);
+//   };
+// };
 
 export const deleteCampus = (id, history) => {
   return async (dispatch) => {
@@ -79,8 +79,6 @@ export default function campusesReducer(state = initialState, action) {
       return action.campuses
       case CREATE_CAMPUS:
         return [...state, action.campus];
-        case UPDATE_CAMPUS:
-          return state.map((campus) => (campus.id === action.campus.id ? action.campus : campus))
         case DELETE_CAMPUS:
           return state.filter((campus) => campus.id !== action.campus.id);
     default:

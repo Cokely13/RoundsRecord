@@ -21,7 +21,7 @@ class SingleCampus extends React.Component {
   }
 
   render() {
-    const campus = this.props.SingleCampus
+    const campus = this.props.singleCampus
     const students = campus.students || []
     const { handleSubmit} = this;
 
@@ -29,6 +29,7 @@ class SingleCampus extends React.Component {
     <div id="single-campus" className="column">
       <div id="single-campus-detail" className="row">
         <div className="column mr1">
+        <img src={campus.imageUrl} />
           <h1>{campus.name}</h1>
           <h1>{campus.address}</h1>
           <p>{campus.description}</p>
@@ -62,7 +63,7 @@ class SingleCampus extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    SingleCampus: state.singleCampus
+    singleCampus: state.singleCampus
   }
 }
 

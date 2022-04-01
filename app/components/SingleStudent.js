@@ -22,10 +22,9 @@ class SingleStudent extends React.Component {
     <div id="single-student" className="column">
       <div id="single-student-detail" className="row">
         <div className="column mr1">
-          <h1>{student.firstName}</h1>
-          <h1>{student.lastName}</h1>
+          <h1>{student.firstName} {student.lastName}</h1>
           <h1>{student.email}</h1>
-          <h1>{student.gpa}</h1>
+          <h1>GPA: {student.gpa}</h1>
           <h1>{campus.name ? <Link to={`/campuses/${campus.id}`}> {campus.name} </Link> : "No Assigned Campus"}</h1>
         </div>
           <img src={student.imageUrl} />

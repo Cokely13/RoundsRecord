@@ -19,8 +19,7 @@ export class AllStudents extends React.Component {
           <div key={student.id}>
         <Link to ={`/students/${student.id}`}key={student.id}>
         <div key={student.id}>
-          <div> Name: {student.firstName} </div>
-          <div> Name: {student.lastName} </div>
+          <div> Name: {student.firstName} {student.lastName}  </div>
           <img src={student.imageUrl} />
         </div>
         </Link>

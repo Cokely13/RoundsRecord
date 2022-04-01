@@ -16,13 +16,15 @@ export class AllCampuses extends React.Component {
 
   render() {
     return  (
-      <div>
+      <div className="campus">
       {this.props.campuses.map((campus) => {
         return (
-        <div key={campus.id}>
+        <div className= "block" key={campus.id}>
         <Link to ={`/campuses/${campus.id}`}key={campus.id}>
         <div key={campus.id}>
           <div> Name: {campus.name} </div>
+          <div> Address: {campus.address} </div>
+          <div> Description: {campus.description} </div>
           <img src={campus.imageUrl} />
         </div>
         </Link>
@@ -32,7 +34,7 @@ export class AllCampuses extends React.Component {
             className= "remove"
             onClick={() => this.props.deleteCampus(campus.id)}
           >
-            X
+           Delete Campus: X
           </button>
         </form>
         </div>

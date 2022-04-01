@@ -50,18 +50,18 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 
 - Write a component to display a single campus with the following information:
   - [X] The campus's name, image, address and description
-  - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
+  - [X] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
 - [X] Display the appropriate campus's info when the url matches `/campuses/:campusId`
 - [X] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view
 
 - Write a component to display a single student with the following information:
   - [X] The student's full name, email, image, and gpa
-  - [ ] The name of their campus (or a helpful message if they don't have one)
+  - [X] The name of their campus (or a helpful message if they don't have one)
 - [X] Display the appropriate student when the url matches `/students/:studentId`
 - [X] Clicking on a student from the all-students view should navigate to show that student in the single-student view
 
-- [ ] Clicking on the name of a student in the single-campus view should navigate to show that student in the single-student view
-- [ ] Clicking on the name of a campus in the single-student view should navigate to show that campus in the single-campus view
+- [X] Clicking on the name of a student in the single-campus view should navigate to show that student in the single-student view
+- [X] Clicking on the name of a campus in the single-student view should navigate to show that campus in the single-campus view
 
 #### Backend
 
@@ -135,14 +135,14 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [X] Write a component to display a form updating _at least_ a campus's name and address
 - [X] Display this component as part of the single-campus view, alongside the single campus
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that campus to be updated in the database
+  - [X] Make an AJAX request that causes that campus to be updated in the database
   - [ ] Update the campus in the current view without needing to refresh the page
 - [ ] In the single-campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as well as this view); hint: the student is still in the database but is no longer associated with the campus
 
 - [X] Write a component to display a form updating _at least_ a student's first and last names, and email
 - [X] Display this component as part of the single-student view, alongside the single student
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that student to be updated in the database
+  - [X] Make an AJAX request that causes that student to be updated in the database
   - [ ] Update the student in the current view without needing to refresh the page
 
 #### Backend
