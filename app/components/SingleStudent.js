@@ -9,9 +9,13 @@ class SingleStudent extends React.Component {
     this.props.loadSingleStudent(this.props.match.params.studentId)
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.singleStudent.name !== this.props.singleStudent.name){
+  //   this.props.loadSingleStudent(this.props.match.params.studentId)}
+  // }
+
   render() {
-    const student = this.props.SingleStudent
-    console.log("props", this.props)
+    const student = this.props.singleStudent
     const campus = student.campus || ""
 
    return (
@@ -31,7 +35,7 @@ class SingleStudent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    SingleStudent: state.singleStudent,
+    singleStudent: state.singleStudent,
   }
 }
 

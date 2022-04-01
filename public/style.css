@@ -19,7 +19,7 @@ body {
 nav {
   align-items: center;
   background-color: #333333;
-  color: #c0c0c0;
+  color: white;
   display: flex;
   height: 80px;
   padding: 10px;
@@ -31,3 +31,33 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+.container {
+	background: #fff;
+    border: 2px solid purple;
+    width: 85%;
+    height: 80vH;
+    font-family: "Georgia", serif;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.box {
+background-color: lightgrey;
+  width: 50px;
+  border: 2px solid green;
+  padding: 25px;
+  margin: 10px;
+}
+
+.smaller-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  }
+
+  img {
+    max-width: 200px;
+  }

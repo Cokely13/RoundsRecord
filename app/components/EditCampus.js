@@ -2,6 +2,7 @@ import React from 'react';
 import { updateCampus } from '../redux/campuses';
 import {fetchSingleCampus} from "../redux/singleCampus"
 import { connect } from 'react-redux';
+import Link from 'react-router-dom/Link';
 
 class EditCampus extends React.Component {
   constructor(props) {
@@ -25,15 +26,12 @@ class EditCampus extends React.Component {
   // }
 
   componentDidUpdate(prevProps) {
-    console.log("clicked")
-    console.log("prevProps", prevProps)
-    console.log("this.props", this.props)
-    // if (prevProps.campus.name !== this.props.campus.name) {
-      // this.setState({
-      //   name: this.props.campus.name || '',
-      //   address: this.props.campus.address || ''
-      // });
-  }
+    if (prevProps.singleCampus.id !== this.props.singleCampus.id) {
+      this.setState({
+        name: this.props.singleCampus.name || '',
+        address: this.props.singleCampus.address || ''
+      });
+  }}
 
   handleChange(evt) {
     this.setState({
@@ -43,7 +41,7 @@ class EditCampus extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.updateCampus({ ...this.props.campus, ...this.state });
+    this.props.updateCampus({ ...this.props.singleCampus, ...this.state });
   }
 
   render() {
@@ -52,6 +50,7 @@ class EditCampus extends React.Component {
 
     return (
       <div>
+        <div> EDIT CAMPUS </div>
         <form id="campus-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
           <input name="name" onChange={handleChange} value={name} />
@@ -66,8 +65,8 @@ class EditCampus extends React.Component {
   }
 }
 
-const mapStateToProps = ({ campus }) => ({
-  campus
+const mapStateToProps = ({ singleCampus }) => ({
+  singleCampus
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

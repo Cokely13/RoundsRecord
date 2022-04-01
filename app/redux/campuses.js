@@ -58,7 +58,7 @@ export const updateCampus = (campus, history) => {
   return async (dispatch) => {
     const { data: updated } = await Axios.put(`/api/campuses/${campus.id}`, campus);
     dispatch(_updateCampus(updated));
-    history.push(`/campuses/${campus.id}`);
+    history.push(`/campuses`);
   };
 };
 

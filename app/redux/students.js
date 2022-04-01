@@ -4,6 +4,7 @@ const SET_STUDENTS = 'SET_STUDENTS'
 const CREATE_STUDENT = 'CREATE_STUDENTS'
 const DELETE_STUDENT = "DELETE_STUDENT";
 const UPDATE_STUDENT = "UPDATE_STUDENT";
+const UNREGISTER_STUDENT = "UNREGISTER_STUDENT"
 
 export const setStudents = (students) => {
   return {
@@ -23,6 +24,12 @@ const _updateStudent = (student) => {
   return {
     type: UPDATE_STUDENT,
     student
+  };
+};
+const _unregisterStudent = (student) => {
+  return {
+    type: UNREGISTER_STUDENT,
+    student: student.student
   };
 };
 
@@ -57,7 +64,18 @@ export const updateStudent = (student, history) => {
   return async (dispatch) => {
     const { data: updated } = await Axios.put(`/api/students/${student.id}`, student);
     dispatch(_updateStudent(updated));
-    history.push(`/students/${student.id}`);
+    history.push(`/students`);
+  };
+};
+
+export const unregisterStudent = (student, history) => {
+  return async (dispatch) => {
+    const id = student.student.id
+    const { data: updated } = await Axios.put(`/api/students/${id}`, student);
+    console.log("Updated", updated)
+    const unregister = updated.campusId = 0
+    dispatch(_unregisterStudent(unregister));
+    history.push(`/students/`);
   };
 };
 
@@ -80,8 +98,11 @@ export default function studentsReducer(state = initialState, action) {
         return [...state, action.student];
         case UPDATE_STUDENT:
           return state.map((student) => (student.id === action.student.id ? action.student : student))
+          case UNREGISTER_STUDENT:
+          return state.map((student) => (student.id === action.student.id ? action.student : student))
         case DELETE_STUDENT:
-      return state.filter((student) => student.id !== action.student.id);
+      return state.filter((student) => student.id !== action.student.id)
+      ;
     default:
       return state
 }}

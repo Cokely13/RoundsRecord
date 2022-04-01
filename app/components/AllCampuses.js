@@ -23,7 +23,7 @@ export class AllCampuses extends React.Component {
         <Link to ={`/campuses/${campus.id}`}key={campus.id}>
         <div key={campus.id}>
           <div> Name: {campus.name} </div>
-          {/* <img src={campus.imageUrl} /> */}
+          <img src={campus.imageUrl} />
         </div>
         </Link>
         <form onSubmit={(ev) => ev.preventDefault()}>

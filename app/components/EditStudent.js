@@ -9,7 +9,7 @@ class EditStudent extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,6 +17,7 @@ class EditStudent extends React.Component {
   }
 
   componentDidMount() {
+    console.log("this .props", this.props)
     const { id } = this.props.match.params;
     this.props.fetchSingleStudent(id);
   }
@@ -26,15 +27,14 @@ class EditStudent extends React.Component {
   // }
 
   componentDidUpdate(prevProps) {
-    console.log("clicked")
-    console.log("prevProps", prevProps)
-    console.log("this.props", this.props)
-    // if (prevProps.campus.name !== this.props.campus.name) {
-      // this.setState({
-      //   name: this.props.campus.name || '',
-      //   address: this.props.campus.address || ''
-      // });
-  }
+    if (prevProps.singleStudent.id !== this.props.singleStudent.id) {
+      this.setState({
+        firstName: this.props.singleStudent.firstName || '',
+        lastName: this.props.singleStudent.lastName || '',
+        email: this.props.singleStudent.email || ''
+      });
+      this.props.fetchSingleStudent(this.props.student);
+  }}
 
   handleChange(evt) {
     this.setState({
@@ -44,7 +44,12 @@ class EditStudent extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.updateStudent({ ...this.props.student, ...this.state });
+    this.props.updateStudent({ ...this.props.singleStudent, ...this.state });
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+    })
   }
 
   render() {
@@ -53,6 +58,7 @@ class EditStudent extends React.Component {
 
     return (
       <div>
+        <div> EDIT STUDENT </div>
         <form id="student-form" onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name:</label>
           <input name="firstName" onChange={handleChange} value={firstName} />
@@ -63,6 +69,7 @@ class EditStudent extends React.Component {
           <label htmlFor="email">Email:</label>
           <input name="email" onChange={handleChange} value={email} />
 
+
           <button type="submit">Submit</button>
         </form>
       </div>
@@ -70,8 +77,8 @@ class EditStudent extends React.Component {
   }
 }
 
-const mapStateToProps = ({ student }) => ({
-  student
+const mapStateToProps = ({singleStudent}) => ({
+  singleStudent
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

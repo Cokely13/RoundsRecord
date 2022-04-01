@@ -24,6 +24,11 @@ class AddStudent extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.createStudent({ ...this.state });
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: ""
+    })
   }
 
   render() {
