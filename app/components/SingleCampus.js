@@ -6,9 +6,7 @@ import Link from "react-router-dom/Link"
 
 
 class SingleCampus extends React.Component {
-  constructor(props){
-    super(props)
-  }
+
   componentDidMount () {
     this.props.loadSingleCampus(this.props.match.params.campusId)
 
@@ -23,7 +21,7 @@ class SingleCampus extends React.Component {
   render() {
     const campus = this.props.singleCampus
     const students = campus.students || []
-    const { handleSubmit} = this;
+
 
    return (
     <div id="single-campus" className="column">
@@ -55,7 +53,6 @@ class SingleCampus extends React.Component {
                                    </div>
         : "No Students Assigned to Campus"}
           </div>
-          {/* <img src={campus.imageUrl} /> */}
         </div>
       </div>
     </div>

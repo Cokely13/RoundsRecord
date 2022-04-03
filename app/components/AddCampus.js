@@ -34,16 +34,20 @@ class AddCampus extends Component {
     const { handleSubmit } = this;
 
     return (
-      <form id="addCampus-form" onSubmit={handleSubmit}>
+      <div className="addCampus">
+      <span>
+      <div className="actionHeader"> ADD CAMPUS</div>
+      </span>
+      <form className="forms" id="addCampus-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input name="name" value={name} onChange={this.handleChange} />
 
         <label htmlFor="address">Address:</label>
         <input name="address" value={address} onChange={this.handleChange} />
-
         <button type="submit">Submit</button>
         <Link to="/">Cancel</Link>
       </form>
+      </div>
     );
   }
 }

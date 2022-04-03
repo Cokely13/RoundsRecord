@@ -23,7 +23,7 @@ const Student = db.define('student', {
     },
     imageUrl: {
       type: Sequelize.STRING,
-      defaultValue: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chocolate-1536867147.jpg?resize=980:*',
+      defaultValue: 'https://i.etsystatic.com/22639391/r/il/3e2279/2377220646/il_1588xN.2377220646_fdjg.jpg',
     },
     gpa: {
       type: Sequelize.DECIMAL,

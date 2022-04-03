@@ -16,10 +16,10 @@ export class AllCampuses extends React.Component {
 
   render() {
     return  (
-      <div className="campus">
+      <div className="container">
       {this.props.campuses.map((campus) => {
         return (
-        <div className= "block" key={campus.id}>
+        <div className= "campus" key={campus.id}>
         <Link to ={`/campuses/${campus.id}`}key={campus.id}>
         <div key={campus.id}>
           <div> Name: {campus.name} </div>

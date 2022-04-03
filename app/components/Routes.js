@@ -8,8 +8,11 @@ import AddStudent from "./AddStudent";
 import AddCampus from "./AddCampus";
 import EditCampus from "./EditCampus";
 import EditStudent from "./EditStudent";
+import Home from "./Home"
 
 const Routes = () => {
+
+const image = "https://aplnexted.com/wp-content/uploads/2021/04/FullStack-Logo.jpeg"
   return (
     <Router>
       <div>
@@ -17,19 +20,20 @@ const Routes = () => {
         <Link className="links" to="/"> Home</Link>
           <Link className="links" to="/campuses"> Campuses</Link>
           <Link className="links" to="/students"> Students</Link>
+          <Link className="links" to="/students">Add Student</Link>
+          <Link className="links" to="/campuses">Add Campus</Link>
         </nav>
         <main>
           <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-          <Link to="/students">Add Student</Link>
-          <Link to="/campuses">Add Campus</Link>
+          <Route exact path="/" component={Home} />
           <Route exact path="/campuses" component={AddCampus} />
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/students" component={AddStudent} />
           <Route exact path="/students" component={AllStudents} />
-          <Route path="/students/:studentId" component={SingleStudent} />
-          <Route path="/students/:studentId" component={EditStudent} />
-          <Route path="/campuses/:campusId" component={SingleCampus} />
-          <Route path="/campuses/:campusId" component={EditCampus} />
+          <Route exact path="/students/:studentId" component={SingleStudent} />
+          <Route exact path="/students/:studentId" component={EditStudent} />
+          <Route exact path="/campuses/:campusId" component={SingleCampus} />
+          <Route exact path="/campuses/:campusId" component={EditCampus} />
         </main>
       </div>
     </Router>

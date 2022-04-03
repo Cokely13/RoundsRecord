@@ -10,7 +10,7 @@ const Campus = db.define('campus', {
     }},
     imageUrl: {
       type: Sequelize.STRING,
-      defaultValue: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chocolate-1536867147.jpg?resize=980:*',
+      defaultValue: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/f8/9e/84/20180202-093117-largejpg.jpg?w=1200&h=-1&s=1',
     },
     address: {
     type: Sequelize.STRING,

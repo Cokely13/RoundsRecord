@@ -19,8 +19,8 @@ class SingleStudent extends React.Component {
     const campus = student.campus || ""
 
    return (
-    <div id="single-student" className="column">
-      <div id="single-student-detail" className="row">
+    <div className="single-student column">
+      <div className="single-student-detail row">
         <div className="column mr1">
           <h1>{student.firstName} {student.lastName}</h1>
           <h1>{student.email}</h1>

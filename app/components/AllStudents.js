@@ -13,10 +13,10 @@ export class AllStudents extends React.Component {
   }
   render() {
     return  (
-      <div>
+      <div className="container">
       {this.props.students.map((student) => {
         return (
-          <div key={student.id}>
+          <div className="student" key={student.id}>
         <Link to ={`/students/${student.id}`}key={student.id}>
         <div key={student.id}>
           <div> Name: {student.firstName} {student.lastName}  </div>
@@ -24,6 +24,7 @@ export class AllStudents extends React.Component {
         </div>
         </Link>
         <form onSubmit={(ev) => ev.preventDefault()}>
+          <div className= "remove">Remove Student</div>
         <button
         type="submit"
           className= "remove"

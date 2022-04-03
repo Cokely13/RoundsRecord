@@ -36,6 +36,11 @@ class AddStudent extends Component {
     const { handleSubmit } = this;
 
     return (
+
+      <div className="addStudent">
+      <span>
+      <div className="actionHeader"> ADD Student</div>
+      </span>
       <form id="addStudent-form" onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name:</label>
         <input name="firstName" value={firstName} onChange={this.handleChange} />
@@ -49,6 +54,7 @@ class AddStudent extends Component {
         <button type="submit">Submit</button>
         <Link to="/">Cancel</Link>
       </form>
+      </div>
     );
   }
 }
