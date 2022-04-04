@@ -46,6 +46,10 @@ Once you've recorded your screencast, please *upload it to YouTube as an unliste
 
 Well before the deadline, we recommend practicing this by recording a very short screencast and uploading it as an unlisted video. If you encounter any technical issues, reach out to us so that we can help you resolve them.
 
+
+********************************************************************
+VIDEO WALTHROUGH LINK: https://www.youtube.com/watch?v=gpcvITeMHdA
+********************************************************************
 ## Evaluation
 
 - Requirements score (70%)
