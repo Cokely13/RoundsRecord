@@ -26,7 +26,6 @@ class AddCampus extends Component {
       name: "",
       address: "",
     })
-    // this.props.history.push("/campuses")
   }
 
   render() {

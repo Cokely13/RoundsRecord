@@ -16,14 +16,10 @@ class EditStudent extends React.Component {
   }
 
   componentDidMount() {
-    console.log("this .props", this.props)
     const { id } = this.props.match.params;
     this.props.fetchSingleStudent(id);
   }
 
-  // componentWillUnmount() {
-  //   this.props.clearTodo();
-  // }
 
   componentDidUpdate(prevProps) {
     if (prevProps.singleStudent.firstName !== this.props.singleStudent.firstName || prevProps.singleStudent.lastName !== this.props.singleStudent.lastName || prevProps.singleStudent.email !== this.props.singleStudent.email) {
@@ -32,7 +28,6 @@ class EditStudent extends React.Component {
         lastName: this.props.singleStudent.lastName || '',
         email: this.props.singleStudent.email || ''
       });
-      // this.props.fetchSingleStudent(this.props.student);
   }}
 
   handleChange(evt) {

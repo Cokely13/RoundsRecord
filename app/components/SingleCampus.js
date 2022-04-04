@@ -22,11 +22,6 @@ class SingleCampus extends React.Component {
     if (prevProps.singleCampus.name !== this.props.singleCampus.name || prevProps.singleCampus.address !== this.props.singleCampus.address) {
       this.props.loadSingleCampus(this.props.match.params.campusId)}}
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    console.log("CLICKED PROPS", this.props)
-    // this.props.updateStudent({ ...this.props.singleStudent, ...this.state });
-  }
 
   render() {
     const campus = this.props.singleCampus

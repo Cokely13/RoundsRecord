@@ -59,7 +59,6 @@ export const unregisterStudent = (student, history) => {
   return async (dispatch) => {
     const id = student.student.id
     const { data: updated } = await Axios.put(`/api/students/${id}`, student);
-    console.log("Updated", updated)
     const unregister = updated.campusId = 0
     dispatch(_unregisterStudent(unregister));
     history.push(`/students/`);
@@ -74,8 +73,6 @@ export const deleteStudent = (id, history) => {
   };
 };
 
-// Take a look at app/redux/index.js to see where this reducer is
-// added to the Redux store with combineReducers
 const initialState = []
 export default function studentsReducer(state = initialState, action) {
   switch (action.type) {
