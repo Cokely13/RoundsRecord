@@ -26,13 +26,13 @@ class EditStudent extends React.Component {
   // }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.singleStudent.id !== this.props.singleStudent.id) {
+    if (prevProps.singleStudent.firstName !== this.props.singleStudent.firstName || prevProps.singleStudent.lastName !== this.props.singleStudent.lastName || prevProps.singleStudent.email !== this.props.singleStudent.email) {
       this.setState({
         firstName: this.props.singleStudent.firstName || '',
         lastName: this.props.singleStudent.lastName || '',
         email: this.props.singleStudent.email || ''
       });
-      this.props.fetchSingleStudent(this.props.student);
+      // this.props.fetchSingleStudent(this.props.student);
   }}
 
   handleChange(evt) {

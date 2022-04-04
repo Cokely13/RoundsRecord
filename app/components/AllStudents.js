@@ -8,18 +8,27 @@ import { Link } from 'react-router-dom'
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllStudents extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true
+    }
+  }
   componentDidMount(){
     this.props.fetchStudents();
+    this.setState( {loading: false })
   }
   render() {
+    const { loading } = this.state
     return  (
       <div className="container">
+        <div>{loading && <div>Loading</div>}</div>
       {this.props.students.map((student) => {
         return (
           <div className="student" key={student.id}>
         <Link to ={`/students/${student.id}`}key={student.id}>
         <div key={student.id}>
-          <div> Name: {student.firstName} {student.lastName}  </div>
+          <div className="nameLine"> Name: {student.firstName} {student.lastName}  </div>
           <img src={student.imageUrl} />
         </div>
         </Link>
@@ -27,7 +36,7 @@ export class AllStudents extends React.Component {
           <div className= "remove">Remove Student</div>
         <button
         type="submit"
-          className= "remove"
+          className= "x-button"
           onClick={() => this.props.deleteStudent(student.id)}
         >
           X

@@ -8,11 +8,10 @@ import AddStudent from "./AddStudent";
 import AddCampus from "./AddCampus";
 import EditCampus from "./EditCampus";
 import EditStudent from "./EditStudent";
-import Home from "./Home"
+
 
 const Routes = () => {
 
-const image = "https://aplnexted.com/wp-content/uploads/2021/04/FullStack-Logo.jpeg"
   return (
     <Router>
       <div>
@@ -25,7 +24,6 @@ const image = "https://aplnexted.com/wp-content/uploads/2021/04/FullStack-Logo.j
         </nav>
         <main>
           <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-          <Route exact path="/" component={Home} />
           <Route exact path="/campuses" component={AddCampus} />
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/students" component={AddStudent} />

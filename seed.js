@@ -16,6 +16,12 @@ const campuses = [{
   imageUrl: 'https://wtop.com/wp-content/uploads/2017/08/Cole-Field-House-7.jpg',
   address: "Cole fieldhouse",
   description: "ACC school in College park"
+},
+{
+  name: 'UNC',
+  imageUrl: 'https://sportsmatik.com/uploads/wiki-venues/dean-smith-center_1582024047.jpg',
+  address: "Dean Dome",
+  description: "ACC school in Chapel Hill"
 }];
 
 const students = [{
@@ -25,26 +31,43 @@ const students = [{
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065648.png',
   gpa: '4.0',
   campusId: 1
-}, {
-  firstName: 'Ryan',
-  lastName: 'Smith',
-  email: "smith@gmail.com",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066354.png&w=350&h=254',
-  gpa: '2.5',
-  campusId: 2
-}, {
-  firstName: 'Bil',
-  lastName: 'Jones',
-  email: "ct@gmail.com",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4376.png&w=350&h=254',
-  gpa: '1.6',
+},
+{
+  firstName: 'JJ',
+  lastName: 'Redick',
+  email: "jj@gmail.com",
+  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3024.png',
+  gpa: '3.2',
   campusId: 1
 },
 {
-  firstName: 'Chuck',
-  lastName: 'Taylor',
+  firstName: 'Paul',
+  lastName: 'Pierce',
+  email: "p@gmail.com",
+  imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzATYjYgzcDTxuxTR_b5BEgtR0mcXnzQTaA&usqp=CAU',
+  gpa: '2.5',
+  campusId: 2
+}, {
+  firstName: 'Payton',
+  lastName: 'Pritchard',
   email: "ct@gmail.com",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4376.png&w=350&h=254',
+  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066354.png&w=350&h=254',
+  gpa: '1.6',
+  campusId: 2
+},
+{
+  firstName: 'Juan',
+  lastName: 'Dixon',
+  email: "jd@gmail.com",
+  imageUrl: 'https://umterps.com/images/2020/3/18/dixon_juan_h1_c02.jpg?width=300',
+  gpa: '3.6',
+  campusId: 3
+},
+{
+  firstName: 'Sidney',
+  lastName: 'Dean',
+  email: "ct@gmail.com",
+  imageUrl: 'https://rctucker63.files.wordpress.com/2014/12/sidney-deane.jpg',
   gpa: '3.3',
 }];
 
