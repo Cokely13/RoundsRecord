@@ -3,7 +3,6 @@ import Axios from "axios";
 const SET_STUDENTS = 'SET_STUDENTS'
 const CREATE_STUDENT = 'CREATE_STUDENTS'
 const DELETE_STUDENT = "DELETE_STUDENT";
-const UNREGISTER_STUDENT = "UNREGISTER_STUDENT"
 
 export const setStudents = (students) => {
   return {
@@ -20,13 +19,6 @@ const _createStudent = (student) => {
 };
 
 
-const _unregisterStudent = (student) => {
-  return {
-    type: UNREGISTER_STUDENT,
-    student: student.student
-  };
-};
-
 const _deleteStudent = (student) => {
   return {
     type: DELETE_STUDENT,
@@ -37,7 +29,7 @@ const _deleteStudent = (student) => {
 export const fetchStudents = () => {
   return async (dispatch) => {
     try {
-      const response = await Axios.get('/api/students');
+      const response = await Axios.get('/api/friends');
       const data = response.data;
       dispatch(setStudents(data))
     } catch (err) {
@@ -48,28 +40,18 @@ export const fetchStudents = () => {
 
 export const createStudent = (student, history) => {
   return async (dispatch) => {
-    const { data: created } = await Axios.post("/api/students", student);
+    const { data: created } = await Axios.post("/api/friends", student);
     dispatch(_createStudent(created));
-    history.push("/students");
+    history.push("/friends");
   };
 };
 
-
-export const unregisterStudent = (student, history) => {
-  return async (dispatch) => {
-    const id = student.student.id
-    const { data: updated } = await Axios.put(`/api/students/${id}`, student);
-    const unregister = updated.campusId = 0
-    dispatch(_unregisterStudent(unregister));
-    history.push(`/students/`);
-  };
-};
 
 export const deleteStudent = (id, history) => {
   return async (dispatch) => {
-    const { data: student } = await Axios.delete(`/api/students/${id}`);
+    const { data: student } = await Axios.delete(`/api/friends/${id}`);
     dispatch(_deleteStudent(student));
-    history.push("/students");
+    history.push("/friends");
   };
 };
 
@@ -80,8 +62,6 @@ export default function studentsReducer(state = initialState, action) {
       return action.students
       case CREATE_STUDENT:
         return [...state, action.student];
-          case UNREGISTER_STUDENT:
-          return state.map((student) => (student.id === action.student.id ? action.student : student))
         case DELETE_STUDENT:
       return state.filter((student) => student.id !== action.student.id)
       ;

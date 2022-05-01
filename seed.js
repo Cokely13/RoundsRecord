@@ -1,86 +1,57 @@
 const { green, red } = require("chalk");
-const { db, Campus, Student } = require("./server/db");
+const { db, Friend, Drink, SelectedFriend, Order } = require("./server/db");
 
-const campuses = [{
-  name: 'Duke',
-  imageUrl: 'https://d3cin4duo2vkym.cloudfront.net/images/2019/11/7/Cameron_Indoor.jpg',
-  address: "Cameron Indoor",
-  description: "ACC school in durham"
+const drinks = [{
+  name: 'Beer',
+  price: '5'
 }, {
-  name: 'Kansas',
-  imageUrl: 'https://kake.images.worldnow.com/images/21906372_G.jpeg',
-  address: "Allen Fieldhouse",
-  description: "Big12 school in Kansas"
+  name: 'Shot',
+  price: '7'
 }, {
-  name: 'Maryland',
-  imageUrl: 'https://wtop.com/wp-content/uploads/2017/08/Cole-Field-House-7.jpg',
-  address: "Cole fieldhouse",
-  description: "ACC school in College park"
-},
-{
-  name: 'UNC',
-  imageUrl: 'https://sportsmatik.com/uploads/wiki-venues/dean-smith-center_1582024047.jpg',
-  address: "Dean Dome",
-  description: "ACC school in Chapel Hill"
+  name: 'Mixed Drink',
+  price: '10'
 }];
 
-const students = [{
-  firstName: 'Jayson',
-  lastName: 'Tatum',
-  email: "tatum@gmail.com",
+const friends = [{
+  name: "Ryan",
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065648.png',
-  gpa: '4.0',
-  campusId: 1
+
 },
 {
-  firstName: 'JJ',
-  lastName: 'Redick',
-  email: "jj@gmail.com",
+ name: "Scott",
   imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3024.png',
-  gpa: '3.2',
-  campusId: 1
+
 },
 {
-  firstName: 'Paul',
-  lastName: 'Pierce',
-  email: "p@gmail.com",
+  name: 'jeff',
   imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzATYjYgzcDTxuxTR_b5BEgtR0mcXnzQTaA&usqp=CAU',
-  gpa: '2.5',
-  campusId: 2
-}, {
-  firstName: 'Payton',
-  lastName: 'Pritchard',
-  email: "ct@gmail.com",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066354.png&w=350&h=254',
-  gpa: '1.6',
-  campusId: 2
-},
-{
-  firstName: 'Juan',
-  lastName: 'Dixon',
-  email: "jd@gmail.com",
-  imageUrl: 'https://umterps.com/images/2020/3/18/dixon_juan_h1_c02.jpg?width=300',
-  gpa: '3.6',
-  campusId: 3
-},
-{
-  firstName: 'Sidney',
-  lastName: 'Dean',
-  email: "ct@gmail.com",
-  imageUrl: 'https://rctucker63.files.wordpress.com/2014/12/sidney-deane.jpg',
-  gpa: '3.3',
 }];
 
+const selects = [{
+  name: "Bill"
+}]
+
+const orders = [{
+  buyer: "Ryan",
+  number: "5",
+  price: '20'
+}]
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
 
-    await Promise.all(campuses.map(campus => {
-      return Campus.create(campus);
+    await Promise.all(friends.map(friend => {
+      return Friend.create(friend);
     }));
-    await Promise.all(students.map(student => {
-      return Student.create(student);
+    await Promise.all(drinks.map(drink => {
+      return Drink.create(drink);
+    }));
+    await Promise.all(selects.map(select => {
+      return SelectedFriend.create(select);
+    }));
+    await Promise.all(orders.map(order => {
+      return Order.create(order);
     }));
 
     console.log(green('Seeding success!'))

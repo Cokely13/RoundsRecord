@@ -1,11 +1,11 @@
 const router = require('express').Router()
-const { Campus, Student } = require('../db')
+const { Friend } = require('../db')
 
 
 router.get('/', async (req, res, next) => {
   try {
-    let campuses = await Campus.findAll()
-    res.json(campuses)
+    let friends = await Friend.findAll()
+    res.json(friends)
   } catch (err) {
     next(err)
   }
@@ -13,10 +13,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const campus = await Campus.findByPk(req.params.id, {
-      include: {model: Student}
-    });
-    res.json(campus);
+    const friend = await Friend.findByPk(req.params.id);
+    res.json(friend);
   } catch (err) {
     next(err);
   }
@@ -24,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    res.status(201).send(await Campus.create(req.body));
+    res.status(201).send(await Friend.create(req.body));
   } catch (error) {
     next(error);
   }
@@ -32,8 +30,8 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const campus = await Campus.findByPk(req.params.id);
-    res.send(await campus.update(req.body));
+    const friend = await Friend.findByPk(req.params.id);
+    res.send(await friend.update(req.body));
   } catch (error) {
     next(error);
   }
@@ -41,9 +39,9 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const campus = await Campus.findByPk(req.params.id);
-    await campus.destroy();
-    res.send(campus);
+    const friend = await Friend.findByPk(req.params.id);
+    await friend.destroy();
+    res.send(friend);
   } catch (error) {
     next(error);
   }
