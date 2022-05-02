@@ -1,21 +1,21 @@
 import { combineReducers } from 'redux'
 import campusesReducer from './campuses'
 import studentsReducer from './students'
-import singleCampusReducer from './singleCampus'
 import singleStudentReducer from './singleStudent'
 import selectedFriendsReducer from './selectedFriends'
 import buyerReducer from './buyer'
 import ordersReducer from './ordersStore'
+import totalsReducer from './totalsStore'
 
 
 const appReducer = combineReducers({
   campuses: campusesReducer,
   students: studentsReducer,
-  singleCampus: singleCampusReducer,
   singleStudent: singleStudentReducer,
   selectedFriend: selectedFriendsReducer,
   buyer: buyerReducer,
-  orders: ordersReducer
+  orders: ordersReducer,
+  totals: totalsReducer
 })
 
 export default appReducer

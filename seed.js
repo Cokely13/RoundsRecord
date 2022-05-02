@@ -1,5 +1,5 @@
 const { green, red } = require("chalk");
-const { db, Friend, Drink, SelectedFriend, Order } = require("./server/db");
+const { db, Friend, Drink, SelectedFriend, Order, Total } = require("./server/db");
 
 const drinks = [{
   name: 'Beer',
@@ -14,28 +14,56 @@ const drinks = [{
 
 const friends = [{
   name: "Ryan",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065648.png',
+  imageUrl: 'https://images.ctfassets.net/hrltx12pl8hq/5qusjAtcAaetdPsing4jR6/2db2f75abd2840caa09d21312b4fc6c8/animals-wildlife-shutterstock_1066200380.jpg?fit=fill&w=480&h=320',
 
 },
 {
  name: "Scott",
-  imageUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3024.png',
+  imageUrl: 'https://images.unsplash.com/photo-1566650554919-44ec6bbe2518?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwYW5pbWFsfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
 
 },
 {
-  name: 'jeff',
-  imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzATYjYgzcDTxuxTR_b5BEgtR0mcXnzQTaA&usqp=CAU',
+  name: 'Jeff',
+  imageUrl: 'https://imageio.forbes.com/specials-images/imageserve/5faad4255239c9448d6c7bcd/Best-Animal-Photos-Contest--Close-Up-Of-baby-monkey/960x0.jpg?fit=bounds&format=jpg&width=960',
+},
+{
+name: 'Rob',
+imageUrl: 'https://secure.img1-fg.wfcdn.com/im/03796479/resize-h445%5Ecompr-r85/4307/43074506/Hanging+Golden+Retriever+Puppy+Statue.jpg',
 }];
 
-const selects = [{
-  name: "Bill"
-}]
+// const selects = [{
+//   name: "Bill"
+// }]
 
 const orders = [{
   buyer: "Ryan",
   number: "5",
   price: '20'
 }]
+
+const totals = [{
+  name: "Ryan",
+  numberOfOrders: 1,
+  total: '20',
+  friendId: 1
+},
+{
+  name: "Jeff",
+  numberOfOrders: 2,
+  total: 10,
+  friendId: 3
+},
+{
+  name: "Scott",
+  numberOfOrders: 3,
+  total: 15,
+  friendId: 2
+},
+{
+name: "Rob",
+numberOfOrders: 4,
+total: 35,
+friendId: 4}]
 
 const seed = async () => {
   try {
@@ -47,11 +75,14 @@ const seed = async () => {
     await Promise.all(drinks.map(drink => {
       return Drink.create(drink);
     }));
-    await Promise.all(selects.map(select => {
-      return SelectedFriend.create(select);
-    }));
+    // await Promise.all(selects.map(select => {
+    //   return SelectedFriend.create(select);
+    // }));
     await Promise.all(orders.map(order => {
       return Order.create(order);
+    }));
+    await Promise.all(totals.map(total => {
+      return Total.create(total);
     }));
 
     console.log(green('Seeding success!'))

@@ -74,7 +74,7 @@ export const createSelected = (friend, history) => {
   return async (dispatch) => {
     const { data: created } = await Axios.post('/api/selectedFriends', friend);
     dispatch(_createSelected(created));
-    history.push("/students");
+    history.push("/friends");
   };
 };
 
@@ -83,7 +83,7 @@ export const deleteSelected = (id, history) => {
   return async (dispatch) => {
     const { data: friend } = await Axios.delete(`/api/selectedFriends/${id}`);
     dispatch(_deleteSelected(friend));
-    history.push("/selectedFriends");
+    history.push("/orders");
   };
 };
 

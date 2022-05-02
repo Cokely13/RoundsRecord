@@ -2,6 +2,7 @@ import React from "react"
 import {connect} from 'react-redux'
 import {fetchSingleStudent} from "../redux/singleStudent"
 import Link from "react-router-dom/Link"
+import { VictoryPie, VictoryChart, VictoryTheme, VictoryLine } from "victory"
 
 function Total (array){
   let price = 0
@@ -12,14 +13,15 @@ function Total (array){
   return price
 }
 
-class SingleStudent extends React.Component {
+class SingleFriend extends React.Component {
   constructor() {
     super();
     this.state = {
+      graph: false
     }
   }
   componentDidMount () {
-    this.props.loadSingleStudent(this.props.match.params.studentId)
+    this.props.loadSingleStudent(this.props.match.params.friendsId)
     // console.log("TEST", this.props.singleStudent.orders.length)
   }
 
@@ -28,13 +30,22 @@ class SingleStudent extends React.Component {
     this.props.loadSingleStudent(this.props.match.params.studentId)}
   }
 
+  showGraph() {
+    this.setState({graph: true})
+    console.log("PROPS", this.props)
+    console.log("State", this.state)
+  }
+
   render() {
     const student = this.props.singleStudent
-    console.log("ORDERS", this.props.singleStudent.orders)
-    const orders = this.props.singleStudent.orders
+    console.log("STUDENTS!!", this.props.singleStudent)
+    console.log("ORDERS!!", this.props.singleStudent.orders)
+    // const orders = this.props.singleStudent.orders
+    // const price  = this.props.singleStudent.orders.price || ""
     // const price = Total(orders)
     // console.log("PRICE", orders.length)
    return (
+    <div>
     <div className="single-student column">
       <div className="single-student-detail row">
         <div className="column mr1">
@@ -42,6 +53,36 @@ class SingleStudent extends React.Component {
         </div>
           <img src={student.imageUrl} />
       </div>
+    </div>
+    <button
+    type="submit"
+    className= "x-button"
+     onClick={() => {this.showGraph()}}
+    >
+      GRAPH
+    </button>
+  <div>{this.state.graph ?
+  <div>
+   <VictoryChart
+   theme={VictoryTheme.material}
+ >
+   <VictoryLine
+     style={{
+       data: { stroke: "#c43a31" },
+       parent: { border: "1px solid #ccc"}
+     }}
+     data={[
+       { x: 1, y: 2 },
+       { x: 2, y: 3 },
+       { x: 3, y: 5 },
+       { x: 4, y: this.props.singleStudent.orders[0].price},
+       { x: 5, y: 7 }
+     ]}
+   />
+   </VictoryChart>
+  </div> : "No Graph"}
+  </div>
+
     </div>
    )}}
 
@@ -59,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleStudent)
+export default connect(mapStateToProps, mapDispatchToProps)(SingleFriend)

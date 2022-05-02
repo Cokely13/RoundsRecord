@@ -5,7 +5,7 @@ import { createSelected } from "../redux/selectedFriends";
 import { Link } from 'react-router-dom'
 
 
-export class AllStudents extends React.Component {
+export class AllFriends extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -36,20 +36,19 @@ export class AllStudents extends React.Component {
       {this.props.students.map((student) => {
         return (
           <div className="student" key={student.id}>
-        <Link to ={`/students/${student.id}`}key={student.id}>
+        <Link to ={`/friends/${student.id}`}key={student.id}>
         <div key={student.id}>
           <div className="nameLine"> Name: {student.name} </div>
           <img src={student.imageUrl} />
         </div>
         </Link>
         <form onSubmit={(ev) => ev.preventDefault()}>
-          <div className= "remove">Select Friend</div>
         <button
         type="submit"
           className= "x-button"
           onClick={() => {this.handleCart(student)}}
         >
-          X
+          SELECT FRIEND
         </button>
         </form>
           </div>
@@ -77,4 +76,4 @@ const mapDispatch = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(AllStudents);
+export default connect(mapState, mapDispatch)(AllFriends);

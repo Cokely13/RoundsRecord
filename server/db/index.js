@@ -6,6 +6,7 @@ const Friend = require('./friend')
 const Drink = require('./drink')
 const SelectedFriend = require('./selectedFriend')
 const Order = require('./order')
+const Total = require('./total')
 
 // This is a great place to establish associations between your models
 // (https://sequelize-guides.netlify.com/association-types/).
@@ -15,6 +16,8 @@ const Order = require('./order')
 Order.belongsTo(Friend)
 Friend.hasMany(Order)
 SelectedFriend.belongsTo(Friend)
+Total.belongsTo(Friend)
+Friend.hasOne(Total)
 
 
 module.exports = {
@@ -23,5 +26,6 @@ module.exports = {
   Drink,
   Friend,
   SelectedFriend,
-  Order
+  Order,
+  Total
 }

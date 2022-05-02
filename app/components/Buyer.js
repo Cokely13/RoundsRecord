@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchSingle } from "../redux/buyer";
 import { fetchSelected, removeAllFromSelectedFriends } from "../redux/selectedFriends";
 import { createOrder } from "../redux/ordersStore";
+import { updateTotal } from "../redux/totalsStore";
 import { Link } from "react-router-dom";
 
 export class Buyer extends React.Component {
@@ -21,7 +22,6 @@ export class Buyer extends React.Component {
   selectBuyer(number){
     // console.log("Number1", this.getRandomInt(number))
     const buyer = ((this.getRandomInt(number)) + 1)
-    console.log("Number", buyer)
     this.props.fetchSingle(buyer);
   }
 
@@ -34,8 +34,14 @@ export class Buyer extends React.Component {
       price: price,
       friendId: this.props.buyer.friendId
     }
+    const total = {
+      id: this.props.buyer.friendId,
+      name: this.props.buyer.name,
+      total: price
+    }
     this.props.createOrder(order)
-    this.props.emptySelectedFriends(this.props.selectedFriend)
+    this.props.updateTotal(total)
+    // this.props.emptySelectedFriends(this.props.selectedFriend)
   }
 
   render() {
@@ -43,7 +49,7 @@ export class Buyer extends React.Component {
     return (
       <div className="container">
         <div>Price: ${price}  </div>
-        <div>{this.props.buyer.name}</div>
+        <div>Drinks On: {this.props.buyer.name}</div>
               <button
               type="submit"
               className= "x-button"
@@ -76,7 +82,8 @@ const mapDispatch = (dispatch, { history }) => {
     fetchSelected: () => dispatch(fetchSelected()),
     fetchSingle: (id) => dispatch(fetchSingle(id)),
     createOrder: (order) => dispatch(createOrder(order, history)),
-    emptySelectedFriends: (selectedFriends) => dispatch(removeAllFromSelectedFriends(selectedFriends))
+    emptySelectedFriends: (selectedFriends) => dispatch(removeAllFromSelectedFriends(selectedFriends)),
+    updateTotal: (total) => dispatch(updateTotal(total, history))
   };
 };
 

@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { VictoryPie, } from 'victory';
+import { VictoryPie, VictoryTheme } from 'victory';
 
 const name = "ryan"
 
 class Drinks extends React.Component {
   render() {
     return (
+      <div>
+      <div>TOTAL PURCHASES</div>
 <VictoryPie
   colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
   data={[
-    { x: name, y: 35 },
-    { x: "Dogs", y: 40 },
-    { x: "Birds", y: 55 }
+    { x: "Drinks", y: 35 },
+    { x: "Meals", y: 40 },
+    { x: "Cabs", y: 55 }
   ]}
 />
+      </div>
     )}}
 
 

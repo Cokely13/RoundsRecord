@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchSelected } from "../redux/selectedFriends";
+import { deleteSelected, fetchSelected } from "../redux/selectedFriends";
 import { Link } from "react-router-dom";
 
 export class Orders extends React.Component {
@@ -18,13 +18,11 @@ export class Orders extends React.Component {
         {friends.map((friend) => {
           return (
             <div className="user" key={friend.id}>
-              <Link to={`/users/${friend.id}`} key={friend.id}>
                 <div key={friend.id}>
                   <h1 className="name">{friend.name}</h1>
                 </div>
-              </Link>
               <button
-                onClick={() => this.props.removedUser(friend.id)}
+                onClick={() => this.props.deleteSelected(friend.id)}
                 type="submit"
               >
                 Remove
@@ -49,6 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatch = (dispatch, { history }) => {
   return {
     fetchSelected: () => dispatch(fetchSelected()),
+    deleteSelected: (id) => dispatch(deleteSelected(id, history))
   };
 };
 

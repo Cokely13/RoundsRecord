@@ -22,6 +22,7 @@ router.use('/drinks', require('./drinks'))
 router.use('/orders', require('./orders'))
 router.use('/friends', require('./friends'))
 router.use('/selectedFriends', require('./selectedFriends'))
+router.use('/totals', require('./totals'))
 
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
