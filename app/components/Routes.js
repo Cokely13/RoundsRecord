@@ -8,6 +8,7 @@ import Victory from "./Victory";
 import Drinks from "./Drinks";
 import Orders from "./Orders";
 import Buyer from "./Buyer";
+import Pie from "./pie";
 
 const Routes = () => {
 
@@ -31,6 +32,7 @@ const Routes = () => {
           <Route exact path="/drinks" component={Drinks} />
           <Route exact path="/orders" component={Orders} />
           <Route exact path="/buyers" component={Buyer} />
+          <Route exact path="/pie" component={Pie} />
         </main>
       </div>
     </Router>

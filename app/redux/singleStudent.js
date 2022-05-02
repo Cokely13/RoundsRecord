@@ -28,7 +28,7 @@ export const updateStudent = (student, history) => {
 export const fetchSingleStudent = (id) => {
   return async (dispatch) => {
     try {
-      const response = await Axios.get(`/api/students/${id}`);
+      const response = await Axios.get(`/api/friends/${id}`);
       const data = response.data;
       dispatch(setSingleStudent(data))
     } catch (err) {

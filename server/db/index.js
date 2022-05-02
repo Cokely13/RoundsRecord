@@ -12,6 +12,10 @@ const Order = require('./order')
 // Example:
 //
 // Puppy.belongsTo(Owner)
+Order.belongsTo(Friend)
+Friend.hasMany(Order)
+SelectedFriend.belongsTo(Friend)
+
 
 module.exports = {
   // Include your models in this exports object as well!

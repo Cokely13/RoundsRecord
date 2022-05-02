@@ -35,7 +35,7 @@ export const createOrder = (order, history) => {
   return async (dispatch) => {
     const { data: created } = await Axios.post("/api/orders", order);
     dispatch(_createOrder(created));
-    history.push("/orders");
+    history.push("/pie");
   };
 };
 

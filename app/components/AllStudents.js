@@ -24,7 +24,8 @@ export class AllStudents extends React.Component {
 
     handleCart(student){
       const select = {
-        name: student
+        name: student.name,
+        friendId: student.id
       }
       this.props.createSelected(select)
     }
@@ -46,7 +47,7 @@ export class AllStudents extends React.Component {
         <button
         type="submit"
           className= "x-button"
-          onClick={() => {this.handleCart(student.name)}}
+          onClick={() => {this.handleCart(student)}}
         >
           X
         </button>

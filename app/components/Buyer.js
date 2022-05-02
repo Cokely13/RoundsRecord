@@ -31,7 +31,8 @@ export class Buyer extends React.Component {
     const order = {
       buyer: this.props.buyer.name,
       number: this.props.selectedFriend.length,
-      price: price
+      price: price,
+      friendId: this.props.buyer.friendId
     }
     this.props.createOrder(order)
     this.props.emptySelectedFriends(this.props.selectedFriend)

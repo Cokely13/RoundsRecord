@@ -3,17 +3,24 @@ import {connect} from 'react-redux'
 import {fetchSingleStudent} from "../redux/singleStudent"
 import Link from "react-router-dom/Link"
 
+function Total (array){
+  let price = 0
+  for (let i = 0; i < array.length; i++) {
+    price = price + array[i].price
+  }
+  console.log("price", price)
+  return price
+}
 
 class SingleStudent extends React.Component {
   constructor() {
     super();
     this.state = {
-      loading: true
     }
   }
   componentDidMount () {
     this.props.loadSingleStudent(this.props.match.params.studentId)
-    this.setState( {loading: false })
+    // console.log("TEST", this.props.singleStudent.orders.length)
   }
 
   componentDidUpdate(prevProps) {
@@ -23,17 +30,15 @@ class SingleStudent extends React.Component {
 
   render() {
     const student = this.props.singleStudent
-    const campus = student.campus || ""
-    const { loading } = this.state
+    console.log("ORDERS", this.props.singleStudent.orders)
+    const orders = this.props.singleStudent.orders
+    // const price = Total(orders)
+    // console.log("PRICE", orders.length)
    return (
     <div className="single-student column">
-      <div>{loading && <div>Loading</div>}</div>
       <div className="single-student-detail row">
         <div className="column mr1">
-          <h1>{student.firstName} {student.lastName}</h1>
-          <h1>{student.email}</h1>
-          <h1>GPA: {student.gpa}</h1>
-          <h1>{campus.name ? <Link to={`/campuses/${campus.id}`}> {campus.name} </Link> : "No Assigned Campus"}</h1>
+          <h1>{student.name} </h1>
         </div>
           <img src={student.imageUrl} />
       </div>
@@ -43,6 +48,7 @@ class SingleStudent extends React.Component {
 const mapStateToProps = (state) => {
   return {
     singleStudent: state.singleStudent,
+    orders: state.orders
   }
 }
 
